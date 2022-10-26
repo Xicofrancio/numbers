@@ -6,12 +6,14 @@ public class DivisibleByFilter implements GenericListFilter{
     public DivisibleByFilter(GenericListFilter filter, Integer number) {
         numero = number;
     }
+    private int divider;
+
+    public DivisibleByFilter(int divider) {
+        this.divider = divider;
+    }
+
     @Override
     public boolean accept(Integer number) {
-        if(number%numero==0){
-            return true;
-        }else{
-            return false;
-        }
+        return number % divider == 0;
     }
 }

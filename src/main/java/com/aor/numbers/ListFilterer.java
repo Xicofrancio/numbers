@@ -1,20 +1,19 @@
 package com.aor.numbers;
-
-import com.sun.tools.javac.util.List;
-
 import java.util.ArrayList;
+import java.util.List;
 
-public class ListFilterer implements GenericListFilter{
-    public List<Integer> filter(List<Integer> list){
-        
-        return list;
-    }
+
+public class ListFilterer {
+    private final GenericListFilter filter;
 
     public ListFilterer(GenericListFilter filter) {
+        this.filter = filter;
     }
 
-    @Override
-    public boolean accept(Integer number) {
-        return false;
+    public List<Integer> filter(List<Integer> list) {
+        List<Integer> filtered = new ArrayList<>();
+        for (int i : list)
+            if (filter.accept(i)) filtered.add(i);
+        return filtered;
     }
 }
